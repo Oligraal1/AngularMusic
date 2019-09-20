@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "album-details.component.scss"
+    ],
+    "names": [],
+    "file": "album-details.component.css"
+}

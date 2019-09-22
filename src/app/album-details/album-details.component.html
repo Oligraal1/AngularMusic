@@ -14,7 +14,9 @@
         </ul>
     </div>
     <div *ngIf="youtube">
-        <video src="{{youtube}}"></video>
+        <video src="{{youtube}}" controls>
+          <code>video</code>
+        </video>
 
     </div>
     <!-- <div *ngFor="let video of videos" class="col-xl-3 col-md-6 mb-4">

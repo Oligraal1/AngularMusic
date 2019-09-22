@@ -8,6 +8,14 @@ import { AlbumDetailsComponent } from './album-details/album-details.component';
 import { SearchComponent } from './search/search.component';
 import { AlbumDescriptionComponent } from './album-description/album-description.component';
 import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { FooterComponent } from './footer/footer.component';
+import { BrowserAnimationsModule } from'@angular/platform-browser/animations';
+import { CarouselComponent } from './carousel/carousel.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule } from '@angular/common/http';
+
 
 const albumsRoutes: Routes = [
   {
@@ -15,8 +23,12 @@ const albumsRoutes: Routes = [
     component: AlbumsComponent
   },
   {
+    path: 'home',
+    component: HomeComponent
+  },
+  {
     path: '',
-    redirectTo: '/albums',
+    redirectTo: '/home',
     pathMatch: 'full'
   },
   {
@@ -36,12 +48,20 @@ const albumsRoutes: Routes = [
     AlbumDetailsComponent,
     SearchComponent,
     AlbumDescriptionComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent,
+    FooterComponent,
+    CarouselComponent,
+
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(albumsRoutes),
+    AngularFontAwesomeModule,
+    NgbModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

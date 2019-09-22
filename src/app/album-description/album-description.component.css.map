@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,EAAE,CAAC;EACC,KAAK,EAAE,SAAS;CACnB;;AAED,AAAA,WAAW,CAAC;EACR,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,GAAG;EACnB,eAAe,EAAE,aAAa;CAQjC;;AAXD,AAII,WAJO,CAIP,QAAQ,CAAC;EACL,OAAO,EAAE,IAAI;CAKhB;;AAVL,AAMQ,WANG,CAIP,QAAQ,CAEJ,CAAC,CAAC;EACE,SAAS,EAAE,IAAI;EACf,KAAK,EAAE,OAAO;CACjB",
+    "sources": [
+        "album-description.component.scss"
+    ],
+    "names": [],
+    "file": "album-description.component.css"
+}

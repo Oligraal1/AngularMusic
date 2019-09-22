@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "AAAA,AAAA,cAAc,CAAA;EACV,MAAM,EAAE,OAAO;CAClB",
+    "mappings": "AAAA,AAAA,cAAc,CAAC;EACX,MAAM,EAAE,OAAO;CAClB;;AAED,AAAA,EAAE,CAAC;EACC,KAAK,EAAE,SAAS;EAChB,cAAc,EAAE,IAAI;CACvB;;AAED,AAAA,KAAK,CAAC;EACF,gBAAgB,EAAE,SAAS;CAC9B",
     "sources": [
         "albums.component.scss"
     ],

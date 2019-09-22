@@ -1,4 +1,13 @@
 .card-selected {
   cursor: pointer;
 }
+
+h1 {
+  color: aliceblue;
+  padding-bottom: 25px;
+}
+
+.card {
+  background-color: aliceblue;
+}
 /*# sourceMappingURL=albums.component.css.map */

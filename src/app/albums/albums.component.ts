@@ -1,8 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
 
-import { Album } from '../album';
-import { ALBUMS } from '../mock-albums';
-import { AlbumService } from '../album.service';
+import {
+  Album
+} from '../album';
+import {
+  ALBUMS
+} from '../mock-albums';
+import {
+  AlbumService
+} from '../album.service';
 
 @Component({
   selector: 'app-albums',
@@ -11,12 +20,12 @@ import { AlbumService } from '../album.service';
 })
 export class AlbumsComponent implements OnInit {
 
-  titlePage: string = "Welcome to My Music";
+  titlePage: string = 'I love my Albums';
   albums: Album[];
-  selectedAlbum : Album;
-  playAlbum: Album = null; // pour gérer l'affichage des caractères [play] 
-  message:string;
-  
+  selectedAlbum: Album;
+  playAlbum: Album = null; // pour gérer l'affichage des caractères [play]
+  message: string;
+
 
   constructor(private albumService: AlbumService) {
     // cont rôle de la méthode count
@@ -24,27 +33,26 @@ export class AlbumsComponent implements OnInit {
 
   ngOnInit() {
     let count = this.albumService.countAlbum();
-    this.albums = this.albumService.paginate(0,count);
-    
+    this.albums = this.albumService.paginate(0, count);
+
   }
-  
+
   onSelect(album: Album) {
     //console.log(album);
     this.selectedAlbum = album;
   }
 
-  playParent($event){
+  playParent($event) {
     this.playAlbum = $event; // identifiant unique
-    
+    console.log('this is event : ' + $event)
   }
-  searchTitle($event)
-  {
+  searchTitle($event) {
     if ($event) this.albums = $event;
   }
-  messageParent($event)
-  {
-    if($event) 
-    {this.message = $event;}
-    console.log("this is event : "+$event)
+  messageParent($event) {
+    if ($event) {
+      this.message = $event;
+
+    }
   }
 }

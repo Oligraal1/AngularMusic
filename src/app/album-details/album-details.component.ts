@@ -2,6 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Album, List } from '../album';
 import { ALBUM_LISTS } from '../mock-albums';
 import { AlbumService } from '../album.service';
+import { YoutubeService } from '../youtube.service';
+
 
 @Component({
   selector: 'app-album-details',
@@ -16,10 +18,14 @@ export class AlbumDetailsComponent implements OnInit {
   @Output() onPlay: EventEmitter<Album> = new EventEmitter;
   albumLists: List[] ; // récupération de la liste des chansons
   songs: List;
-  constructor(private albumService: AlbumService) { }
+  youtube:string;
+ // videos: any[];
+  constructor(private albumService: AlbumService, private youTubeService: YoutubeService) { }
 
   ngOnInit() {
-    console.log(this.album); // contrôler que les données rentrent bien ici
+    // console.log('album : ', this.album); // contrôler que les données rentrent bien ici
+    // this.videos = [];
+    // this.youTubeService.getVideosForChanel('UC_LtA_EtCr7Jp5ofOsYt18g', 15).subscribe(lista => {for (let element of lista["items"]) {this.videos.push(element)}});
   }
 
   // dès que quelque chose "rentre" dans le component enfant via une propriété Input
@@ -30,13 +36,23 @@ export class AlbumDetailsComponent implements OnInit {
     if(this.album){
       // récupération de la liste des chansons
       this.songs = this.albumService.getAlbumList(this.album.id);
-      console.log(this.album.id)
+
+      console.log('album.id : ',this.album.id)
     }
-   
+
   }
-  play(album: Album)
+  youtuber()
+{
+  console.log("yeahhh !!!")
+}
+  play()
   {
-    this.onPlay.emit(album);
-   
+    this.album = this.albumService.getAlbum(this.album.id);
+    console.log('this album : ',this.album);
+    this.youtube = this.album.youtube;
+    console.log('YOUTUBE : ',this.album.youtube);
+    return this.youtube;
+    //this.onPlay.emit(youtube);
+
   }
 }

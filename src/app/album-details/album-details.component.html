@@ -1,13 +1,32 @@
-<div class="card" *ngIf="album">
+<div class="card sticky-top " *ngIf="album">
     <img *ngIf="album.url" class="card-img-top" src="{{album.url}}" alt="Group Music">
     <div class="card-body">
-      <h5 class="card-title">{{ album.title }}</h5>
-      <p class="card-text">Name: {{ album.name }}</p>
-      <p class="card-text">{{ album.ref }}</p>
-      <a href="#" class="btn btn-primary" (click)="play(album)">Play >> </a>
+        <h5 class="card-title">{{ album.title }}</h5>
+        <p class="card-text">Auteur : {{ album.name }}</p>
+        <p class="card-text">{{ album.ref }}</p>
+        <button class="btn btn-dark" (click)="play()">Play >> </button>
+
     </div>
-    <ul class="list-group" *ngIf="songs">
-      <h2>Playlist</h2>
-      <li *ngFor="let song of songs.list " class="list-group-item">{{song}}</li>
-    </ul>
-  </div>
+    <div class="card-footer">
+        <ul class="list-group" *ngIf="songs">
+            <h3>Playlist</h3>
+            <li *ngFor="let song of songs.list " class="list-group-item">{{song}}</li>
+        </ul>
+    </div>
+    <div *ngIf="youtube">
+        <video src="{{youtube}}"></video>
+
+    </div>
+    <!-- <div *ngFor="let video of videos" class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-0 shadow vh-50">
+            <a href="https://www.youtube.com/watch?v={{video.id.videoId}}" target="_blank">
+                <img [src]="video.snippet.thumbnails.medium.url" class="card-img-top" alt="..."></a>
+            <div class="card-body text-center">
+                <h5 class="card-title mb-0">
+                    <a href="https://www.youtube.com/watch?v={{video.id.videoId}}">{{video.snippet.title}}</a></h5>
+                <div class="card-text text-black-50">{{video.snippet.description.slice(0, 100)}}</div>
+                <p class="card-text">{{video.snippet.description}}</p>
+            </div>
+        </div>
+    </div> -->
+</div>

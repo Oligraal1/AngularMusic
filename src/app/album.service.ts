@@ -9,12 +9,14 @@ import { ALBUM_LISTS } from './mock-albums';
   providedIn: 'root'
 })
 export class AlbumService {
-  private _albums: Album[] = ALBUMS; // _ convention private et protected
-  private _albumList: List[] = ALBUM_LISTS;
- 
 
-  constructor() { 
-   
+  private _albums: Album[] = ALBUMS; // _ convention private et protected
+
+  private _albumList: List[] = ALBUM_LISTS;
+
+
+  constructor() {
+
   }
 
   getAlbums() {
@@ -28,12 +30,12 @@ export class AlbumService {
     return this._albumList.find(list => list.id === id);
   }
   countAlbum(){
-    
+
     var count = 0;
     for (let i=0;i < this._albums.length;i++) if(this._albums[i] != null) count++;
     console.log("nbre of Albums : "+count)
     return count;
-  
+
     }
   paginate(start: number, end: number):Album[]{
     return this._albums.sort(
@@ -47,7 +49,7 @@ export class AlbumService {
       this._albums.forEach(album => {
         if (album.title.includes(word)) response.push(album);
       });
-      console.log ("Response : "+ response) 
+      console.log ("Response : "+ response)
       return response;
     }
   }

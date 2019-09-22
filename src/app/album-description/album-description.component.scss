@@ -1,0 +1,16 @@
+h1 {
+    color: aliceblue;
+}
+
+.cardheader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .youtube {
+        padding: 25px;
+        i {
+            font-size: 5rem;
+            color: #CC0000;
+        }
+    }
+}

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Album } from '../album';
 import { AlbumService } from '../album.service';
@@ -10,7 +10,9 @@ import { AlbumService } from '../album.service';
 })
 export class AlbumDescriptionComponent implements OnInit {
 
-  album : Album;
+
+  titlePage = 'I love my Album';
+  album: Album;
   constructor(
     private route: ActivatedRoute,
     private aS: AlbumService
@@ -19,7 +21,7 @@ export class AlbumDescriptionComponent implements OnInit {
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     this.album = this.aS.getAlbum(id);
-  
+   
   }
 
 }

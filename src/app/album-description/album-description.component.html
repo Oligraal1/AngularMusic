@@ -1,12 +1,18 @@
-<div class="card" *ngIf="album">
-        <img *ngIf="album.url" class="card-img-top" src="{{ album.url }}" alt="Group Music">
-        <div class="card-body">
-          <h5 class="card-title">{{ album.title }}</h5>
-          <p class="card-text">Name: {{ album.name }}</p>
-          <p class="card-text">{{ album.description }}</p>
-          <p class="card-text">{{ album.ref }}</p>
-          
+<div class="col-sm-8">
+    <h1>{{ titlePage }}</h1>
+    <div class="card" *ngIf="album">
+        <div class="cardheader">
+            <img *ngIf="album.url" class="card-img-top col-sm-5 pt-2" src="{{ album.url }}" alt="Group Music">
+            <a class="youtube" href="{{ album.youtube }}" target="_blank"><i class="fa fa-youtube"></i></a>
         </div>
-        
-      </div>
-    
+
+        <div class="card-body">
+            <h5 class="card-title">{{ album.title }}</h5>
+            <p class="card-text font-weight-bold">Auteur : {{ album.name }}</p>
+            <p class="card-text">{{ album.description }}</p>
+            <p class="card-text">{{ album.ref }}</p>
+
+        </div>
+
+    </div>
+</div>

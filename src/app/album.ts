@@ -7,6 +7,7 @@ export class Album {
     duration: number;
     status : string;
     url?: string;
+    youtube?:string;
     like?: string;
     tags?: Array<string>
 }

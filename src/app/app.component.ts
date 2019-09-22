@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'My Music';
+  title = 'I love my Music';
+  src = "./assets/img/lovemusicblue.jpg"
 }

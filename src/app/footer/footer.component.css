@@ -1,0 +1,15 @@
+.footer {
+  margin-top: 80px;
+  padding-top: 80px;
+}
+
+.footer p {
+  font-size: 0.8rem;
+  text-align: right;
+  color: aliceblue;
+}
+
+.footer p .fa {
+  color: #c44b51;
+}
+/*# sourceMappingURL=footer.component.css.map */

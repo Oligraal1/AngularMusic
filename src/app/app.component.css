@@ -1,1 +1,9 @@
-/* No CSS *//*# sourceMappingURL=app.component.css.map */
+h1 {
+  color: #e0f8ff;
+}
+
+#nav {
+  margin-bottom: 25px;
+  padding-bottom: 50px;
+}
+/*# sourceMappingURL=app.component.css.map */

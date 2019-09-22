@@ -1,0 +1,11 @@
+<ngb-carousel class="col-sm-12" *ngIf="event_list" #mycarousel interval="10000" [keyboard]="true" [pauseOnHover]="true" [wrap]="true" [showNavigationArrows]="true" [showNavigationIndicators]="true">
+    <ng-template ngbSlide *ngFor="let event of upcoming_events" class="col-sm-12">
+        <img class="d-block col-sm-12" id="event.id" [src]="event.img" alt="event.eventDescription">
+        <a class="nav-link" routerLink="/albums" href="">
+            <div class="carousel-caption d-none d-md-block">
+                <h3>{{ event.event }}</h3>
+                <p [innerText]="event.eventDescription"></p>
+            </div>
+        </a>
+    </ng-template>
+</ngb-carousel>

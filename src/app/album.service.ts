@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { Album, List } from './album';
 import { ALBUMS } from './mock-albums';
 import { ALBUM_LISTS } from './mock-albums';
+import { Observable } from 'rxjs';
+import { domain } from 'process';
+import { Page } from './page';
 
 
 
@@ -9,6 +12,7 @@ import { ALBUM_LISTS } from './mock-albums';
   providedIn: 'root'
 })
 export class AlbumService {
+  [x: string]: any;
 
   private _albums: Album[] = ALBUMS; // _ convention private et protected
 
@@ -52,5 +56,17 @@ export class AlbumService {
       console.log ("Response : "+ response)
       return response;
     }
+  }
+  headers = new Headers({'Content-Type': 'application/json', 'Accept': 'application/json'});
+
+getAlbumsByParams(params: URLSearchParams): Observable<Page> {
+    const endpoint = domain + '/albums';
+    return this.http
+      .get(endpoint, { search: params, headers: this.headers })
+      .map((res: Response) => res.json())
+      .catch((e) => this.handleError(e));
+}
+  handleError(e: any) {
+    throw new Error("Method not implemented.");
   }
 }

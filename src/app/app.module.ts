@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from'@angular/platform-browser/animations';
 import { CarouselComponent } from './carousel/carousel.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
+import { PaginateComponent } from './paginate/paginate.component';
 
 
 const albumsRoutes: Routes = [
@@ -52,6 +53,7 @@ const albumsRoutes: Routes = [
     HomeComponent,
     FooterComponent,
     CarouselComponent,
+    PaginateComponent,
 
 
   ],
@@ -62,6 +64,7 @@ const albumsRoutes: Routes = [
     AngularFontAwesomeModule,
     NgbModule,
     HttpClientModule,
+   BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

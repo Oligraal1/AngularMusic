@@ -8,6 +8,11 @@
     <div class="col-sm-8 music">
         <h1>{{ titlePage }}</h1>
         <!-- Pagination -->
+        <app-paginate  [maxPages]="maxPages"
+        [current]="currentPage"
+        [postsPerPage]="postsPerPage"
+        [itemsPerPage]="itemsPerPage"
+        (changePage)="pageChanged($event)"></app-paginate>
         <app-search (onSearch)="searchTitle($event)" (notFound)="messageParent($event)">
         </app-search>
         <p>{{message}}</p>
@@ -38,7 +43,10 @@
                         <span class="badge badge-info">{{ word }}</span>
                     </li>
                 </ul>
-                <a class="btn btn-outline-dark" href="#" role="button">en</a>
+                <div [@openClose]= "isOpen ? 'open' : 'closed'" (click)="onClickEn()">
+                    <button class="btn btn-outline-dark">en</button>
+                </div>
+                
                 <!-- permert de gérer un if plus complexe voir doc Angular -->
                 <ng-template [ngIf]="album.like">
                     <img class="glyph-icon" src="./assets/svg/si-glyph-heart.svg" />

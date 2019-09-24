@@ -1,5 +1,13 @@
-<div class="btn-group" role="group" aria-label="Basic example">
-    <a href="javascript:;" (click)="setPage(page, itemsPerPage)"><button type="button" class="btn btn-secondary">Previous</button></a> 
-        <a href="javascript:;" (click)="setPage(page, itemsPerPage)"><button type="button" class="btn btn-secondary">{{page}}</button></a> 
-       <a href="javascript:;" (click)="setPage(page, itemsPerPage)"><button type="button" class="btn btn-secondary">Next</button></a> 
-      </div>
+<nav class="col-md-4 offset-md-4" aria-label="Page navigation example">
+  <ul *ngIf="numberPages>1" class="pagination">
+    <li [ngClass]="{'disabled' : currentPage == 1}" class="page-item">
+      <a (click)="previous()" class="page-link">Previous</a>
+    </li>
+    <li [class.active]="currentPage==page" *ngFor="let page of pages" class="page-item">
+      <a (click)="selectedPage(page)" class="page-link">{{ page }}</a>
+    </li>
+    <li [ngClass]="{'disabled' : currentPage == numberPages}"  class="page-item">
+      <a (click)="next()" class="page-link">Next</a>
+    </li>
+  </ul>
+</nav>

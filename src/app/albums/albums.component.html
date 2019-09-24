@@ -8,11 +8,7 @@
     <div class="col-sm-8 music">
         <h1>{{ titlePage }}</h1>
         <!-- Pagination -->
-        <app-paginate  [maxPages]="maxPages"
-        [current]="currentPage"
-        [postsPerPage]="postsPerPage"
-        [itemsPerPage]="itemsPerPage"
-        (changePage)="pageChanged($event)"></app-paginate>
+        <app-paginate (setPaginate)="paginate($event)"></app-paginate>
         <app-search (onSearch)="searchTitle($event)" (notFound)="messageParent($event)">
         </app-search>
         <p>{{message}}</p>
@@ -61,7 +57,7 @@
         </div>
         <!-- .card -->
         <!-- Pagination -->
-
+        <app-paginate (setPaginate)="paginate($event)"></app-paginate>
     </div>
 
     <!-- .music -->

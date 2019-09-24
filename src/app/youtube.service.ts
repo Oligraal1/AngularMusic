@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class YoutubeService {
 
-  apiKey : string = 'AIzaSyDKsrHoNRb-WkgXkG7qK2vW-NPsOaPjlNk';
+  //apiKey : string = 'AIzaSyDKsrHoNRb-WkgXkG7qK2vW-NPsOaPjlNk';
 
   constructor(public http: HttpClient) { }
 

@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { Album, List } from './album';
 import { ALBUMS } from './mock-albums';
 import { ALBUM_LISTS } from './mock-albums';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { domain } from 'process';
-import { Page } from './page';
 
+import { environment } from '../environments/environment';
 
 
 @Injectable({
@@ -57,16 +57,18 @@ export class AlbumService {
       return response;
     }
   }
-  headers = new Headers({'Content-Type': 'application/json', 'Accept': 'application/json'});
+  count(): number {
 
-getAlbumsByParams(params: URLSearchParams): Observable<Page> {
-    const endpoint = domain + '/albums';
-    return this.http
-      .get(endpoint, { search: params, headers: this.headers })
-      .map((res: Response) => res.json())
-      .catch((e) => this.handleError(e));
-}
-  handleError(e: any) {
-    throw new Error("Method not implemented.");
+    return this._albums? this._albums.length : 0;
+  }
+  paginateNumberPage():number{
+    if ( typeof environment.numberPage == 'undefined' )
+      throw "Attention la pagination n'est pas définie" ;
+
+    return environment.numberPage ;
+  }
+  sendCurrentNumberPage = new Subject<number>();
+  currentPage(page: number) {
+    return this.sendCurrentNumberPage.next(page)
   }
 }

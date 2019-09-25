@@ -54,11 +54,8 @@ export class AlbumsComponent implements OnInit {
   playAlbum: Album = null; // pour gérer l'affichage des caractères [play]
   message: string;
   isOpen = true;
-  itemsPerPage: number = 5;
-  postsPerPage: number[] = [5, 10, 15];
-  isLoading: boolean;
-  page: number;
-  album: Album;
+  pos : number;
+  status: string = null; // pour gérer l'affichage des caractères [play]
 
   constructor(private albumService: AlbumService) {
     // cont rôle de la méthode count
@@ -71,7 +68,7 @@ export class AlbumsComponent implements OnInit {
   }
   /**
    * Séletionne album pour afficher détails
-   * @param album 
+   * @param album
    */
   onSelect(album: Album) {
     //console.log(album);
@@ -84,7 +81,7 @@ export class AlbumsComponent implements OnInit {
   }
   /**
    * Permet de faire une recherche dans barre search sur titre album
-   * @param $event 
+   * @param $event
    */
   searchTitle($event) {
     if ($event) this.albums = $event;
@@ -108,21 +105,24 @@ export class AlbumsComponent implements OnInit {
 
   /**
    * Gère la pagination de la page
-   * @param event 
+   * @param event
    */
-  pageChanged(event) {
-    this.page = event.page;
-    console.log('***', this.page)
-    this.itemsPerPage = event.itemsPerPage;
-    console.log('---', this.itemsPerPage)
-    this.loadAlbumsByPage(this.page, this.itemsPerPage);
+  paginate($event) {
+    this.albums = this.albumService.paginate($event.start, $event.end);
   }
-  loadAlbumsByPage(page: number, rows: number) {
-    let params = new URLSearchParams();
-    console.log(params)
-    params.set('page', page.toString());
-    params.set('rows', rows.toString());
-    this.isLoading = true;
+  // pageChanged(event) {
+  //   this.page = event.page;
+  //   console.log('***', this.page)
+  //   this.itemsPerPage = event.itemsPerPage;
+  //   console.log('---', this.itemsPerPage)
+  //   this.loadAlbumsByPage(this.page, this.itemsPerPage);
+  // }
+  // loadAlbumsByPage(page: number, rows: number) {
+  //   let params = new URLSearchParams();
+  //   console.log(params)
+  //   params.set('page', page.toString());
+  //   params.set('rows', rows.toString());
+  //   this.isLoading = true;
     //this.album = this.albumService.getAlbum(this.album.id);
 
   //   this.albums.subscribe(data => {
@@ -132,5 +132,5 @@ export class AlbumsComponent implements OnInit {
   //     this.isLoading = false;
   //     console.log(error);
   //   });
-   }
+   //}
 }

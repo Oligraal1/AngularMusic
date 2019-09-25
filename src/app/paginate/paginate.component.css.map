@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,SAAS,CAAC,GAAG,CAAC,CAAC,CAAC;EACZ,OAAO,EAAE,YAAY;EACrB,MAAM,EAAE,SAAS;EACjB,WAAW,EAAE,IAAI;EACjB,OAAO,EAAE,KAAK;CACjB;;AAED,AAAA,SAAS,CAAC,GAAG,CAAC,WAAW,CAAC;EACtB,KAAK,EAAE,KAAK;CACf",
-    "sources": [
-        "paginate.component.scss"
-    ],
-    "names": [],
-    "file": "paginate.component.css"
-}

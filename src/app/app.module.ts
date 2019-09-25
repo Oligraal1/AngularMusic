@@ -16,6 +16,7 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { PaginateComponent } from './paginate/paginate.component';
+import { AudioPlayerComponent } from './audio-player/audio-player.component';
 
 
 const albumsRoutes: Routes = [
@@ -54,6 +55,7 @@ const albumsRoutes: Routes = [
     FooterComponent,
     CarouselComponent,
     PaginateComponent,
+    AudioPlayerComponent,
 
 
   ],

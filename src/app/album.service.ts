@@ -17,12 +17,15 @@ export class AlbumService {
   private _albums: Album[] = ALBUMS; // _ convention private et protected
 
   private _albumList: List[] = ALBUM_LISTS;
-
-
+  subjectAlbum = new Subject<Album>();
+  sendCurrentNumberPage = new Subject<number>();
+  
   constructor() {
 
   }
-
+/**
+ * Getter
+ */
   getAlbums() {
    return this._albums;
   }
@@ -33,6 +36,9 @@ export class AlbumService {
   {
     return this._albumList.find(list => list.id === id);
   }
+  /**
+   * Compte le nombre d'albums
+   */
   countAlbum(){
 
     var count = 0;
@@ -41,11 +47,20 @@ export class AlbumService {
     return count;
 
     }
+    /**
+     * Incremente une pagination des albums
+     * @param start 
+     * @param end 
+     */
   paginate(start: number, end: number):Album[]{
     return this._albums.sort(
       (a, b) => { return b.duration - a.duration }
     ).slice(start, end);
   }
+  /**
+   * Gère la barre de recherche
+   * @param word 
+   */
   search(word: string): Album[]
   {
     if (word.length > 2) {
@@ -57,6 +72,9 @@ export class AlbumService {
       return response;
     }
   }
+  /**
+   * Crée une pagination dans le component album avec barre next et previous
+   */
   count(): number {
 
     return this._albums? this._albums.length : 0;
@@ -67,8 +85,34 @@ export class AlbumService {
 
     return environment.numberPage ;
   }
-  sendCurrentNumberPage = new Subject<number>();
+ 
   currentPage(page: number) {
     return this.sendCurrentNumberPage.next(page)
   }
+/**
+ * Gère la barre de progression
+ */
+
+switchOn(album: Album){
+  this._albums.forEach(
+    alb => {
+      if (alb.id === album.id) {
+        album.status = 'on';
+      } 
+      else
+      {
+        alb.status = 'off';
+      }
+    }
+  );
+  this.subjectAlbum.next(album);
+}
+
+switchOff(album: Album){
+  this._albums.forEach(
+    alb => {
+      alb.status = 'off';
+    }
+  );
+}
 }

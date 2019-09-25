@@ -34,7 +34,7 @@ export class AppComponent {
           let hours = Math.floor(num / 3600);
           let minutes = Math.floor(num / 60);
 
-          return `${hours} h ${minutes - hours * 60} min ${num - minutes * 60} s`
+          return `Vous êtes connectés depuis ${hours} h ${minutes - hours * 60} min ${num - minutes * 60} s`
         }),
         take(12 * 60 * 3) // permet d'arrêter ici au bout de 12*3 minutes interval particulier à interval RxJS 6
       )

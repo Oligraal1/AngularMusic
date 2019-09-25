@@ -51,7 +51,7 @@ export class AlbumsComponent implements OnInit {
   titlePage: string = 'I love my Albums';
   albums: Album[];
   selectedAlbum: Album;
-  playAlbum: Album = null; // pour gérer l'affichage des caractères [play]
+  //playAlbum: Album = null; // pour gérer l'affichage des caractères [play]
   message: string;
   isOpen = true;
   pos : number;
@@ -76,8 +76,9 @@ export class AlbumsComponent implements OnInit {
   }
 
   playParent($event) {
-    this.playAlbum = $event; // identifiant unique
-    console.log('this is event : ' + $event)
+    this.status = $event.id; // identifiant unique
+    console.log('this is event : ' + $event);
+    this.albumService.switchOn($event);
   }
   /**
    * Permet de faire une recherche dans barre search sur titre album

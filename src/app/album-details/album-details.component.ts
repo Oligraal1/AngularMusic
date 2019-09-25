@@ -37,21 +37,22 @@ export class AlbumDetailsComponent implements OnInit {
       // récupération de la liste des chansons
       this.songs = this.albumService.getAlbumList(this.album.id);
 
-      console.log('album.id : ',this.album.id)
+      console.log('album.id : ',this.album)
     }
 
   }
   youtuber()
 {
-  console.log("yeahhh !!!")
+  this.album = this.albumService.getAlbum(this.album.id);
+  console.log('this album : ',this.album);
+  this.youtube = this.album.youtube;
+  console.log('YOUTUBE : ',this.album.youtube);
+  return this.youtube;
 }
-  play()
+  play(album: Album)
   {
-    this.album = this.albumService.getAlbum(this.album.id);
-    console.log('this album : ',this.album);
-    this.youtube = this.album.youtube;
-    console.log('YOUTUBE : ',this.album.youtube);
-    return this.youtube;
+   console.log("****", album)
+    this.onPlay.emit(album); 
     //this.onPlay.emit(youtube);
 
   }

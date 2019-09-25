@@ -4,8 +4,8 @@
         <h5 class="card-title">{{ album.title }}</h5>
         <p class="card-text">Auteur : {{ album.name }}</p>
         <p class="card-text">{{ album.ref }}</p>
-        <button class="btn btn-dark" (click)="play()">Play >> </button>
-
+        <button class="btn btn-dark" (click)="play(album)">Play >> </button>
+        <button class="btn" (click)="youtube()"><i class="fa fa-youtube"></i></button>
     </div>
     <div class="card-footer">
         <ul class="list-group" *ngIf="songs">

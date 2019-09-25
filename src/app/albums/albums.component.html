@@ -22,7 +22,7 @@
                     <div class="d-flex justify-content-between">
                         <div>
                             <h4>{{ album.name }}</h4>
-                            <p class="card-text">{{ index + 1 }} - {{ album.ref }} <span *ngIf="playAlbum==album">[play]</span></p>
+                            <p class="card-text">{{ index + 1 }} - {{ album.ref }} <span *ngIf="status==album.id">[play]</span></p>
                         </div>
                         <img class="card-img col-sm-2" src="{{ album.url}}" alt="">
                     </div>

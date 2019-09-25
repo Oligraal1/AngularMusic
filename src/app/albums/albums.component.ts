@@ -58,7 +58,7 @@ export class AlbumsComponent implements OnInit {
   status: string = null; // pour gérer l'affichage des caractères [play] 
 
   constructor(private albumService: AlbumService) {
-    // cont rôle de la méthode count
+    console.log(this.albumService.getAlbums().subscribe(albums => console.log(albums)))
   }
 
   ngOnInit() {

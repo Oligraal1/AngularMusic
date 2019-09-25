@@ -34,7 +34,7 @@ export class AudioPlayerComponent implements OnInit {
         const player = setInterval(() => {
             this.current++;
             this.ratio += step; // on ajoute le ratio
-            console.log('ratio : ',this.ratio);
+            
             if (this.ratio > 100) {
               clearInterval(player);
               this.showplayer = false;

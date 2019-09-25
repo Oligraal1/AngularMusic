@@ -11,7 +11,7 @@ export class PaginateComponent implements OnInit {
   @Output() setPaginate: EventEmitter<{ start: number; end: number }> = new EventEmitter();
 
   pages: number[] = []; // pages num
-  perPage: number; // number album(s) per page variable d'env 
+  perPage: number = 2; // number album(s) per page
   total: number = 0; // total albums
   numberPages: number = 0;
   currentPage: number;
@@ -26,21 +26,22 @@ export class PaginateComponent implements OnInit {
       this.currentPage = numberPage;
       this.init(this.currentPage);
     })
-    
+
   }
 
   /**
    *  init paginate
-   * @param page 
+   * @param page
    */
-  init(page : number = 1) {
-      this.total = this.aS.count();
-      this.numberPages = Math.ceil(this.total / this.perPage);
+  init(page: number = 1) {
+    this.aS.countAlbum().subscribe(count => {
+      this.numberPages = Math.ceil(count / this.perPage);
       this.currentPage = page;
       this.pages = [];
       for (let i = 1; i < this.numberPages + 1; i++) {
         this.pages.push(i);
       }
+    })
   }
 
   selectedPage(page: number) {

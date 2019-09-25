@@ -3,7 +3,7 @@ import { Album, List } from '../album';
 import { ALBUM_LISTS } from '../mock-albums';
 import { AlbumService } from '../album.service';
 import { YoutubeService } from '../youtube.service';
-
+import { interval, Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-album-details',
@@ -35,25 +35,25 @@ export class AlbumDetailsComponent implements OnInit {
     // des chansons.
     if(this.album){
       // récupération de la liste des chansons
-      this.songs = this.albumService.getAlbumList(this.album.id);
+     this.albumService.getAlbumList(this.album.id).subscribe( songs => this.songs = songs);
 
-      console.log('album.id : ',this.album)
     }
 
   }
   youtuber()
 {
-  this.album = this.albumService.getAlbum(this.album.id);
-  console.log('this album : ',this.album);
-  this.youtube = this.album.youtube;
-  console.log('YOUTUBE : ',this.album.youtube);
-  return this.youtube;
+ this.albumService.getAlbum(this.album.id).subscribe(
+    album => this.album = album.map(youtube =>{
+     this.youtube =  album.youtube
+    }),
+  )
+
+
 }
   play(album: Album)
   {
-   console.log("****", album)
-    this.onPlay.emit(album); 
-    //this.onPlay.emit(youtube);
+    this.onPlay.emit(album);
+   
 
   }
 }

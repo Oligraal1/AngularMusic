@@ -1,6 +1,6 @@
 <div class="bg-dark">
     <div class="container-fuild principal">
-            <app-audio-player></app-audio-player>
+        <app-audio-player></app-audio-player>
         <nav id='nav' class="navbar navbar-expand-lg navbar-dark">
             <a class="navbar-brand" routerLink="/home" routerLinkActve="home" href="#">{{ title }} <img class="col-sm-2" src= "{{ src }}" alt=""></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,21 +18,33 @@
                         <span class="sr-only">(current)</span>
                     </a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" routerLink="/login" routerLinkActve="active" href="#">Se connecter
-                      <span class="sr-only">(current)</span>
-                  </a>
+                    <li *ngIf="auth.authenticated()==false; else elseAuth" class="nav-item active">
+                        <a class="nav-link" routerLink="/login" routerLinkActive="active">
+                          Se connecter
+                      </a>
                     </li>
+                    <ng-template #elseAuth>
+                        <li class="nav-item active">
+                            <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">
+                          Tableau de bord
+                      </a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link disconnect" (click)="auth.logout()">
+                          Se déconnecter
+                      </a>
+                        </li>
+                    </ng-template>
                 </ul>
-               
+
             </div>
-            
+
         </nav>
 
         <div>
             <p class="text-right">{{timer}}</p>
         </div>
-       
+
         <router-outlet></router-outlet>
         <app-footer></app-footer>
     </div>

@@ -17,7 +17,20 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { PaginateComponent } from './paginate/paginate.component';
 import { AudioPlayerComponent } from './audio-player/audio-player.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import * as firebase from 'firebase';
 
+const firebaseConfig = {
+  apiKey: "AIzaSyDc21Kfrzkv8joy4N5egzvO4-9RdHjBWXA",
+  authDomain: "ilovemymusic.firebaseapp.com",
+  databaseURL: "https://ilovemymusic.firebaseio.com",
+  projectId: "ilovemymusic",
+  storageBucket: "ilovemymusic.appspot.com",
+  messagingSenderId: "907371331380",
+  appId: "1:907371331380:web:8f3d29571302ae084b6f61",
+  measurementId: "G-G4JE3XTK9H"
+};
+firebase.initializeApp(firebaseConfig);
 
 const albumsRoutes: Routes = [
   {
@@ -41,6 +54,10 @@ const albumsRoutes: Routes = [
     path: 'album/:id',
     component: AlbumDescriptionComponent
   },
+  {
+    path: 'dashboard',
+    component: DashboardComponent
+  },
 ];
 
 @NgModule({
@@ -56,6 +73,7 @@ const albumsRoutes: Routes = [
     CarouselComponent,
     PaginateComponent,
     AudioPlayerComponent,
+    DashboardComponent,
 
 
   ],

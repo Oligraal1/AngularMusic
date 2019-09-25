@@ -30,18 +30,21 @@ export class SearchComponent implements OnInit {
   ngOnInit() {}
   onSubmit(form: NgForm): void { // récupération des données du formulaire
     console.log("valeur form de search.ts : " + form.value['word']);
-    let search = this.albumService.search(form.value['word']);
+    let search = this.albumService.search(form.value['word']).subscribe(albums => {
+      let message = "Désolé, la recherche n'a rien donné.";
+      if(albums.length != 0)
+      {
+        this.onSearch.emit(albums);
+      }
+      else {
+        this.notFound.emit(message);
+      }
+    });
     //
     console.log('ooooo :', search)
-    let message = "Désolé, la recherche n'a rien donné."
-    
-    if(search.length != 0) 
-    {
-      this.onSearch.emit(search);
-    }
-    else {
-      this.notFound.emit(message);
-    }
+
+
+
   }
 }
 

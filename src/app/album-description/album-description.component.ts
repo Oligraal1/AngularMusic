@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Album } from '../album';
 import { AlbumService } from '../album.service';
-
+import { interval, Observable, Subscription } from 'rxjs';
 @Component({
   selector: 'app-album-description',
   templateUrl: './album-description.component.html',
@@ -10,9 +10,9 @@ import { AlbumService } from '../album.service';
 })
 export class AlbumDescriptionComponent implements OnInit {
 
-
   titlePage = 'I love my Album';
-  album: Album;
+  album:Album;
+
   constructor(
     private route: ActivatedRoute,
     private aS: AlbumService
@@ -20,8 +20,8 @@ export class AlbumDescriptionComponent implements OnInit {
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
-    this.album = this.aS.getAlbum(id);
-   
+   this.aS.getAlbum(id).subscribe(album => this.album = album );
+
   }
 
 }

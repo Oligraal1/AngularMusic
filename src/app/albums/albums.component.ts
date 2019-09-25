@@ -55,20 +55,21 @@ export class AlbumsComponent implements OnInit {
   message: string;
   isOpen = true;
   pos : number;
-  status: string = null; // pour gérer l'affichage des caractères [play] 
+  status: string = null; // pour gérer l'affichage des caractères [play]
+  count;
 
   constructor(private albumService: AlbumService) {
     console.log(this.albumService.getAlbums().subscribe(albums => console.log(albums)))
   }
 
   ngOnInit() {
-    let count = this.albumService.countAlbum();
-    this.albums = this.albumService.paginate(0, count);
 
+     this.albumService.paginate(0, 5).subscribe(albums=>this.albums = albums);
+     this.count = this.albumService.countAlbum().subscribe(count=>this.count = count);
   }
   /**
    * Séletionne album pour afficher détails
-   * @param album 
+   * @param album
    */
   onSelect(album: Album) {
     //console.log(album);
@@ -77,12 +78,12 @@ export class AlbumsComponent implements OnInit {
 
   playParent($event) {
     this.status = $event.id; // identifiant unique
-    console.log('this is event : ' + $event);
+   
     this.albumService.switchOn($event);
   }
   /**
    * Permet de faire une recherche dans barre search sur titre album
-   * @param $event 
+   * @param $event
    */
   searchTitle($event) {
     if ($event) this.albums = $event;
@@ -106,19 +107,11 @@ export class AlbumsComponent implements OnInit {
 
   /**
    * Gère la pagination de la page
-   * @param event 
+   * @param event
    */
   paginate($event) {
-    this.albums = this.albumService.paginate($event.start, $event.end);
+     this.albumService.paginate($event.start, $event.end).subscribe(albums=>this.albums = albums);
   }
-    //this.album = this.albumService.getAlbum(this.album.id);
 
-  //   this.albums.subscribe(data => {
-  //     this.albums = data;
-  //     this.isLoading = false;
-  //   }, error => {
-  //     this.isLoading = false;
-  //     console.log(error);
-  //   });
-   
+
 }

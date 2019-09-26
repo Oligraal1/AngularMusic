@@ -15,10 +15,14 @@ import { BrowserAnimationsModule } from'@angular/platform-browser/animations';
 import { CarouselComponent } from './carousel/carousel.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
-import { PaginateComponent } from './paginate/paginate.component';
+import { PaginateComponent } from './share/paginate/paginate.component';
 import { AudioPlayerComponent } from './audio-player/audio-player.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import * as firebase from 'firebase';
+import { AppRoutingModule } from './app-routing.module';
+import { AdminModule} from './admin/admin.module';
+import { ShareModule } from './share/share.module';
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyDc21Kfrzkv8joy4N5egzvO4-9RdHjBWXA",
@@ -32,33 +36,6 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 
-const albumsRoutes: Routes = [
-  {
-    path: 'albums',
-    component: AlbumsComponent
-  },
-  {
-    path: 'home',
-    component: HomeComponent
-  },
-  {
-    path: '',
-    redirectTo: '/home',
-    pathMatch: 'full'
-  },
-  {
-    path: 'login',
-    component: LoginComponent
-  },
-  {
-    path: 'album/:id',
-    component: AlbumDescriptionComponent
-  },
-  {
-    path: 'dashboard',
-    component: DashboardComponent
-  },
-];
 
 @NgModule({
   declarations: [
@@ -71,20 +48,22 @@ const albumsRoutes: Routes = [
     HomeComponent,
     FooterComponent,
     CarouselComponent,
-    PaginateComponent,
+   // PaginateComponent,
     AudioPlayerComponent,
     DashboardComponent,
-
+    //AlbumComponent
 
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(albumsRoutes),
     AngularFontAwesomeModule,
     NgbModule,
     HttpClientModule,
-   BrowserAnimationsModule
+   BrowserAnimationsModule,
+   AppRoutingModule,
+   AdminModule,
+   ShareModule
   ],
   providers: [],
   bootstrap: [AppComponent]

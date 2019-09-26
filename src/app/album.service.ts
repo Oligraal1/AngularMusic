@@ -39,11 +39,11 @@ export class AlbumService {
    */
   getAlbums(): Observable < Album[] > {
     return this.http.get < Album[] > (this.albumsUrl + '/.json', httpOptions).pipe(map(albums => _.values(albums)),
-      map(albums => {
-        return albums.sort((a, b) => {
-          return b.duration - a.duration
-        });
-      })
+      // map(albums => {
+      //   return albums.sort((a, b) => {
+      //     return b.duration - a.duration
+      //   });
+      // })
     )
   }
 

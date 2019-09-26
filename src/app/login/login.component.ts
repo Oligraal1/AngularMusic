@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   constructor( private authS: AuthService,
     private router: Router) {
       if (this.authS.authenticated())
-      this.router.navigate(['/dashboard'], { queryParams: { message: 'Success' } });
+      this.router.navigate(['/admin'], { queryParams: { message: 'Success' } });
     }
 
   ngOnInit() {
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
 
     this.authS.auth(form.value['email'], form.value['password']).then(
       () => {
-        this.router.navigate(['/dashboard'], { queryParams: { message: 'Success' } });
+        this.router.navigate(['/admin'], { queryParams: { message: 'Success' } });
       }
     ).catch(
       error => {

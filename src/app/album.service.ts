@@ -38,13 +38,17 @@ export class AlbumService {
    * Getter
    */
   getAlbums(): Observable < Album[] > {
+    
     return this.http.get < Album[] > (this.albumsUrl + '/.json', httpOptions).pipe(map(albums => _.values(albums)),
+ 
       // map(albums => {
       //   return albums.sort((a, b) => {
       //     return b.duration - a.duration
       //   });
       // })
+      
     )
+    
   }
 
   getAlbum(id: string): Observable < Album > {
@@ -154,6 +158,14 @@ switchOff(album: Album): void {
   album.status = 'off';
   this.http.put<void>(this.albumsUrl + `/${album.id}/.json`, album).subscribe(() => {
   });
+}
+
+/**
+ * Gére l'ajout d'un album dans base de données
+ * @param album 
+ */
+addAlbums(album: Album): Observable<void> {
+  return this.http.post<void>(this.albumsUrl + '/.json', album);
 }
 }
 

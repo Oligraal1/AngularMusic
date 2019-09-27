@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PaginateComponent } from './paginate/paginate.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -10,6 +11,6 @@ import { PaginateComponent } from './paginate/paginate.component';
     CommonModule
   ],
   declarations: [PaginateComponent],
-  exports: [PaginateComponent]
+  exports: [PaginateComponent, FormsModule, ReactiveFormsModule]
 })
 export class ShareModule { }

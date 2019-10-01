@@ -9,7 +9,7 @@ import { Album } from 'src/app/album';
   styleUrls: ['./album.component.scss']
 })
 export class AlbumComponent implements OnInit {
-
+  count;
   albums: Album[]; 
   constructor(private albumService: AlbumService) { 
     
@@ -20,6 +20,7 @@ export class AlbumComponent implements OnInit {
   this.albumService.getAlbums().subscribe(albums => this.albums = albums)
     
     //console.log("length :", this.albums.length)
+    this.count = this.albumService.count();
     
   }
   

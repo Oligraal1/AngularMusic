@@ -16,7 +16,7 @@
                 <tbody>
                     <tr *ngFor="let album of albums">
                         <th scope="row">{{ album.id }}</th>
-                        <td><button class="btn btn-light">Update</button></td>
+                        <td><button routerLink="/admin/update/{album.id}" type="button" class="btn btn-light">Update</button></td>
                         <td>{{ album.name }}</td>
                         <td>{{ album.title }}</td>
                         <td>{{ album.ref }}</td>

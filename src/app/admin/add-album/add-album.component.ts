@@ -12,12 +12,13 @@ import { Router } from '@angular/router';
 })
 export class AddAlbumComponent implements OnInit {
   
+  [x: string]: any;
   albumForm: FormGroup;
   titlePage: string = "Ajouter une nouvelle page";
   //albums: Album[];
   @Input() albums: Album;
   
-  // newID: number;
+  newID: number;
  
 
   constructor(private fb: FormBuilder, private aS: AlbumService, private router: Router){ 
@@ -74,30 +75,30 @@ get url() {
   return this.albumForm.get('url');
 }
 onSubmit() {
-  // this.aS.getAlbums().subscribe(albums =>console.log(albums) )
-  //this.aS.getAlbums().subscribe(albums => {
-    //let newID = albums.length
-  //})
-  // let newId  =this.albums.length +1;
-  //console.log('newID', newID)
-//   let album = {
-//     //id : this.albums.length.toString(),
-//     name : this.albumForm.value['name'],
-//     ref : this.albumForm.value['ref'],
-//     title : this.albumForm.value['title'],
-//     description : this.albumForm.value['description'],
-//     duration : this.albumForm.value['duration'],
-//     url : this.albumForm.value['url'],
-//     status : 'off'
-//   }
+  this.aS.getAlbums().subscribe(albums =>console.log(albums) )
+  this.aS.getAlbums().subscribe(albums => {
+    let newID = albums.length
+  })
+  //let newId  =this.albums.length +1;
+  console.log('newID', this.newID)
+  let album: Album = {
+
+    name : this.albumForm.value['name'],
+    ref : this.albumForm.value['ref'],
+    title : this.albumForm.value['title'],
+    description : this.albumForm.value['description'],
+    duration : this.albumForm.value['duration'],
+    url : this.albumForm.value['url'],
+    status : 'off'
+  }
   
  
-//   this.aS.addAlbums(album).subscribe(
-//     album => { console.log(album)},
-//     error => console.error(error),
-//     () => {
-//       this.router.navigate(['/admin'], {queryParams: {message: 'success'}})
-//     });
+  this.aS.addAlbums(album).subscribe(
+    album => { console.log(album)},
+    error => console.error(error),
+    () => {
+      this.router.navigate(['/admin'], {queryParams: {message: 'success'}})
+    });
  }
 
 }

@@ -78,7 +78,7 @@
                                         </div>
                                     </div>
                     <div>
-                        <button (click)="onSubmit()" type="submit" class='btn btn-primary'>Envoyer</button>
+                        <button [disabled]="albumForm.invalid" (click)="onSubmit()" type="submit" class='btn btn-primary'>Envoyer</button>
                     </div>
             </form>
 </div>

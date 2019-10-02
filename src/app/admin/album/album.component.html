@@ -1,5 +1,8 @@
 <div class='container'>
            <app-paginate (setPaginate)="paginate($event)"></app-paginate>
+           <p>
+            <button class="btn btn-dark">Nombre d'album(s) : {{ count | async }}</button>
+          </p>
     <a class="text-info btn btn-light mb-4" routerLink="/admin/add" href="">Ajouter un album</a>
         <table  class="table table-dark" >
                 <thead>
@@ -15,13 +18,13 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let album of albums">
-                        <th scope="row">{{ album.id }}</th>
+                        <th scope="row">{{ album.length }}</th>
                         <td><button routerLink="/admin/update/{album.id}" type="button" class="btn btn-light">Update</button></td>
                         <td>{{ album.name }}</td>
                         <td>{{ album.title }}</td>
                         <td>{{ album.ref }}</td>
                         <td>{{ album.duration }}</td>
-                        <td><button class="btn btn-danger">Supprimer</button></td>
+                        <td><button class="btn btn-danger" routerLink="/admin/delete/{album.id}/deleted">Supprimer</button></td>
                     </tr>
                 </tbody>
             </table>

@@ -24,6 +24,8 @@ import { AdminModule} from './admin/admin.module';
 import { ShareModule } from './share/share.module';
 
 
+
+
 const firebaseConfig = {
   apiKey: "AIzaSyDc21Kfrzkv8joy4N5egzvO4-9RdHjBWXA",
   authDomain: "ilovemymusic.firebaseapp.com",
@@ -51,6 +53,7 @@ firebase.initializeApp(firebaseConfig);
    // PaginateComponent,
     AudioPlayerComponent,
     DashboardComponent,
+   
     //AlbumComponent
 
   ],

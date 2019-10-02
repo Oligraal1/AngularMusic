@@ -20,7 +20,8 @@ export class AlbumComponent implements OnInit {
   this.albumService.getAlbums().subscribe(albums => this.albums = albums)
     
     //console.log("length :", this.albums.length)
-    this.count = this.albumService.count();
+    this.count = this.albumService.countAlbum();
+    console.log('Count : ', this.count)
     
   }
   

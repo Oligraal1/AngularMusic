@@ -1,6 +1,6 @@
 export class Album {
   [x: string]: any;
-    id: string;
+    
     ref: string;
     name: string;
     title: string;

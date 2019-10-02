@@ -41,11 +41,6 @@ export class AlbumService {
     
     return this.http.get < Album[] > (this.albumsUrl + '/.json', httpOptions).pipe(map(albums => _.values(albums)),
  
-      // map(albums => {
-      //   return albums.sort((a, b) => {
-      //     return b.duration - a.duration
-      //   });
-      // })
       
     )
     
@@ -125,7 +120,6 @@ search(word: string): Observable<Album[]> {
  * Crée une pagination dans le component album avec barre next et previous
  */
 count(): number {
-  console.log('albums url : ' , this.albumsUrl.length)
   return this.albumsUrl ? this.albumsUrl.length : 0;
 }
 paginateNumberPage(): number {
@@ -166,6 +160,10 @@ switchOff(album: Album): void {
  */
 addAlbums(album: Album): Observable<void> {
   return this.http.post<void>(this.albumsUrl + '/.json', album);
+}
+updateAlbum(ref: string, album: Album): Observable<void> {
+  console.log('REF : ',ref);
+  return this.http.put<void>(this.albumsUrl + `/${ref}/.json`, album);
 }
 }
 
